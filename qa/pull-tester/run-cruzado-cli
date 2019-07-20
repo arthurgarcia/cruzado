@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# This is a thin wrapper around cruzado-cli that strips the Windows-style EOLs
+# from the output if present. It is necessary when using cruzado-cli.exe on
+# Linux since shells will interpret the line-endings as part of the result.
+
+CURDIR=$(cd $(dirname "$0"); pwd)
+# Get BUILDDIR and REAL_CRUZADOD
+
+# Grab the value of $REAL_CRUZADOCLI which may be cruzado-cli.exe.
+. "${CURDIR}/tests-config.sh"
+
+"${REAL_CRUZADOCLI}" "$@" | sed 's/\r//'

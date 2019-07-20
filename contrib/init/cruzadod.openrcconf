@@ -1,0 +1,33 @@
+# /etc/conf.d/cruzadod: config file for /etc/init.d/cruzadod
+
+# Config file location
+#CRUZADOD_CONFIGFILE="/etc/cruzado/cruzado.conf"
+
+# What directory to write pidfile to?  (created and owned by $CRUZADOD_USER)
+#CRUZADOD_PIDDIR="/var/run/cruzadod"
+
+# What filename to give the pidfile
+#CRUZADOD_PIDFILE="${CRUZADOD_PIDDIR}/cruzadod.pid"
+
+# Where to write cruzadod data (be mindful that the blockchain is large)
+#CRUZADOD_DATADIR="/var/lib/cruzadod"
+
+# User and group to own cruzadod process
+#CRUZADOD_USER="cruzado"
+#CRUZADOD_GROUP="cruzado"
+
+# Path to cruzadod executable
+#CRUZADOD_BIN="/usr/bin/cruzadod"
+
+# Nice value to run cruzadod under
+#CRUZADOD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#CRUZADOD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for cruzadod to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+CRUZADOD_SIGTERM_TIMEOUT=60
