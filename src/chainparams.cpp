@@ -31,7 +31,6 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.vout.resize(1);
     txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
-    txNew.vout[0].nValue = 0;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
     CBlock genesis;
@@ -52,12 +51,12 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  * database (and is in any case of zero value).
  *
  * >>> from pyblake2 import blake2s
- * >>> 'cruZado' + blake2s(b'NY Times 05/Oct/2011 Steve Jobs, Apple’s Visionary, Dies at 56LTC#433272 27659f4c97de825afe9f1d4ab6c2ba4e83751a11f0144905b0fec849c36fb1ce LTC#741825 27659c79fbb898e9c35f55d49126afcc3a63d1501d399651f21980c538cbaa8f DJIA close on 29 Nov 2017: 23,940.68').hexdigest()
+ * >>> 'cruZado' + blake2s(b'[Mega-Sena] Resultado Concurso 2170 (17/07/2019) 10 - 21 - 24 - 36 - 38 - 51').hexdigest()
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, const uint256& nNonce, const std::vector<unsigned char>& nSolution, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "cruZado6f099db24212fc48cc80bcf8d46874cd44a7a196625cc1e08a567bff77da2e79";
-    const CScript genesisOutputScript = CScript() << ParseHex("04aaa049f7609d4b17ac733a67dd8abd10c0b5b410f0b3681b36dfb85fdc157fa22257895785bfc0c8741a9ff87d98d8a9a5330a8790aadd2f709576f65b37db89") << OP_CHECKSIG;
+    const char* pszTimestamp = "cruZado835baacb6ed945f9eddde740f19f117bb7ca685d439943160bedeee707c773f8";
+    const CScript genesisOutputScript = CScript() << ParseHex("0479180e0a45ad8c5e4b52356bdef7c4fee30ed25af72af20d6e29ccc838ab9950eacf68d981ee97150239e0fdb2d00a2cce89ea9ea7d2d1d7f2bc9771630a9d2d") << OP_CHECKSIG;
 
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nSolution, nBits, nVersion, genesisReward);
 }
@@ -129,7 +128,7 @@ public:
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(
-            1512832667,
+            1563580800,
             uint256S("0x00000000000000000000000000000000000000000000000000000000000002e6"),
             ParseHex("00070c35670ed414e88f629ba7dae8dcadcbb16419221ad948059cbd018917e2b8bec09405ad14327e810ca560c67568235f72a9116a980b83f6c132ddaee132b7dceaccd2cd473d94a492b14d50caea2c998962008d96dbe4d023f9f43583b85552a401883b1075190c19808ebe4b06d5a3ede1535dd4068587e1fb1c961a04f70fc2c8c282fe5986bf5bc1ec1e55143e1fa12812444e3c2915b1810193d9a2f0408d474f59237f074a4e773808162efe813380f2a4acb20607b40e133385c1f815cd533abc3ab921f6e26cf2724bb95aaf1f563ae2149cf3fbe12cf27e5b21b7baf70aff163d35588534c4693d87e775c9728cd9e9079a9e7e21412626238eda92f7ad62372a910fd82fff185cfbd3d42a23e73c04dc42cb192204196231b222331016e16c2a20cb3842509a99370a02c7efdb9bc11b78f511b548b22cce5199abe1c849f994fe69a903bbfdbe5dd0025168cd45c96c3d4d458132819dc515b41c3a8544089e2554c568fa0fe802c123b63447adbc8ad49f9d208b62ad588b3f2ab0141210e0efe94b37b49b667568f4859767a1cc3397b5dae222e3ad1ebd8bfe6d27104bdbad5a4d6bd6b0c473a2b9e1efbf4cad9ef27b1734bc0cb56515bf586cc2b74ca65b71bf02361fd2210ce67fe25547bace2fe2fef9e5ec21854c1e6fb52f7a5ddb45999c3390a843bcfaafdbc55bf46b0472045e2fee4e94e98d1ebc01ffa94518ee6dff7a161115e8c5e688c6eab316a651db392055fafef65a5ed7069a772e2bcbfd8e9e7195cb187f2d837b769f6b7726960720b1a77fefacd2b33dc61f9739d78636b8a1078f6859950449d3f422e1fbc45d5030972ab06df45f5d23fdff1c4a256135774d133cbbae07771c27360ee54cc5fe54d393c17a74963a68e8ae5e017f480f2550b4d9c4720cb7b3dd47f810d0e12aaf047a2b3d003f78ee1bc94910640ed9f96875c2be854b95ccc31bd751f06a9281631fc87406d2bb3a6d31d45f376a22bbb325dbfe3a13f93d356dc2c41ebdbf8458a66735222d49a823c3cf9493aa0188deecd6f9a3dd2f033146045d9930ae09e2b0137dc877dbbb015f5d965e496f766c7a94de9fa7e55b8e2fea1aaf81615c94f94af9ebf5ebab5e99929d6947b6ffd983b6789f222551ebe6dfa899e35ba19ac8d0e6500e2fb3d71fd572077055d7db468f84589851aee7de7643854c9df7ec544ccdcdd72be08572a7b7048d57b859f19ed9b1b907f763c6cf60b4bfbc3e780f62ee8e66f5cf1c2b963928f20ddf20ccbb277f95cebee326a99080f9a2d60b4e805d444826fe6c0ac8d1c8f14496d73abd50131a65360057a90b51676de2316718f1c26aa47426280d6f8ba0cda4775db73346e6ae6ffcb68351bca27b48ee96751b2463df6bb2881a2ed8138e615478363601a0cb32dc0d4bed1d7e416f13baf2bad22099716423afd2cd79ca13aac929c26cd3147fa9de8cff0cb20ec3ec4f80d2e531d82e727ff1a5436d601f4c2ad2880ed50992b1fad1deadf8a659f154e25edbb5d891091ba473471070ae867ad59692f340fa0d5010d7d914d3b0abe7a1557df47d719b355a0984c6db898b36125781999b3a39d7e838f4efe2fb30df49bd5c22af43ea1656a363bc9fafe9f4622035b77e224cfc51230869d77d6e86ac09f34670c3f634aec89a759376e70f3dfbe572b174958e62613a11bcc6599c29360f640bb93691f0dfc6d1ecd4b148767c1c00f13dbc62f4209f1934b55bca72e5ff92897920bd6d1f6f0f0601093cd0fe1b02d7c24b1816855aede3da2a277ab12d13c5491d4b1b4c59607ea8f027ee5012c159dbc9551340ef820e0babe096dec30b8838d89dc0ad10eb4d1a5672d67abca3e7e84111c61ce0280c8df8392513"),
             0x1f07ffff, 4, 0);
@@ -173,39 +172,20 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (      0, consensus.hashGenesisBlock)
-            (    293, uint256S("000094343dc23483c26239f71603980a5c56062c061b81a6b6f30a77e6717d41"))
-            (    586, uint256S("000015256f276b0bb1d8e3b601ac37644e76cf860d8bc565aa1ff82fc0a6ef3f"))
-            (    879, uint256S("000083828428d8d2f5245d9d4ada17df9418ae1c320268f477a853f800df3365"))
-            (   1330, uint256S("0000c242f621ac3a22e6cd230b25fc27800082072724cab678f5e32c12f8d1f8"))
-            (   2659, uint256S("00004c165c02803abd5cbb066a7b70328efa8e0345fa7658701af96c53458da8"))
-            (   5317, uint256S("0000486d6d3e2587fe0c3f48fd74ed21676202bf1867648dbf4c1a52f3659d4e"))
-            (  10633, uint256S("0000005f809e79671f57d4dbb0ad8777d1e4a2f07d72e146316271567e6987b0"))
-            (  21266, uint256S("000000126cfdf6cb5279df2a53e79ab30ea0f7336c794120c3197b9373908dd6"))
-            (  31901, uint256S("00000088282df4c26a47bea22cb313a29ffe9ac8f30aa7de0129ca2c3a770f9a"))
-            (  50000, uint256S("0000003f6762c60d9699a212e819a7d6630c6ea602a475908bfefe962f0803bb"))
-            (  60000, uint256S("0000001334ddb7af2a2c17fd6dc0f7d0c0f6ba077403a0aed763b304001b7402"))
-            (  70000, uint256S("000000094161a482b4d2f6dd2a261bcd6962a2c00a5e6ba94002d0633ce8912e"))
-            (  80000, uint256S("000000157847bab44d199ad34954da98910c726575716270771ee7e32ceba1d6"))
-            (  90000, uint256S("0000002564e3694cd1240d570fdcf9cf36791b2e2c462040fb78af34959dd02e"))
-            (  93096, uint256S("00000038101895ae9add3b5d288db258b053c4bdc39642aeb6be44f7f53bc929"))
-            (  95001, uint256S("0000000169dcc8f2b842beefd00bb7bf0069eba2acdbbfc70c9fa8edcbe326e1"))
-            ( 120000, uint256S("000004c863a6f98cccecab76eab12b4a349f13f77ba6adab932197e2fb122f31"))
-            ( 200000, uint256S("0000030578048515037b4fdcf86a0a5a100c1bff8df73a96992688d64dcd3aa1"))
-            ( 262840, uint256S("000014ceea9e80561902ab4cde1d137e7a9925fe8388f72fa614e0314bd7f328")),
-            1554904170,     // * UNIX timestamp of last checkpoint block
-            262840,         // * total number of transactions between genesis and last checkpoint
+            (      0, consensus.hashGenesisBlock),
+            1563580800,     // * UNIX timestamp of last checkpoint block
+            1,         // * total number of transactions between genesis and last checkpoint
                             //   (the tx=... number in the SetBestChain debug.log lines)
-            1600            // * estimated number of transactions per day after checkpoint
+            0            // * estimated number of transactions per day after checkpoint
         };
 
         // Hardcoded fallback value for the Sprout shielded value pool balance
         // for nodes that have not reindexed since the introduction of monitoring
         // in #2795.
-        nSproutValuePoolCheckpointHeight = 313335;
-        nSproutValuePoolCheckpointBalance = 50924382539501;
+        // nSproutValuePoolCheckpointHeight = 313335;
+        // nSproutValuePoolCheckpointBalance = 50924382539501;
         fZIP209Enabled = true;
-        hashSproutValuePoolCheckpointBlock = uint256S("00001531c60bc5d9730693ead57f49ec26d175d548360c47b0cf80af24dc5d28");
+        // hashSproutValuePoolCheckpointBlock = uint256S("00001531c60bc5d9730693ead57f49ec26d175d548360c47b0cf80af24dc5d28");
     }
 };
 static CMainParams mainParams;
@@ -264,7 +244,7 @@ public:
         pchMessageStart[1] = 0x90;
         pchMessageStart[2] = 0x86;
         pchMessageStart[3] = 0x5d;
-        vAlertPubKey = ParseHex("04a229174e5e5d0680151333b36a2ebebfb5fc01460724fa14050d0263678ee51996f7611774bc93377289dde6b05036c3db28ef312341309bf9737e6b80aaf66c");
+        vAlertPubKey = ParseHex("04a820f404086f812ba6effc156bc7fba4b3248e002be5f44de573301805263700081df39e0e84d3aead611c2da1f89cce353cf2c6643c14651e3f91acdba255f3");
 
         nDefaultPort = 39333;
         nPruneAfterHeight = 1000;
@@ -324,10 +304,10 @@ public:
         // Hardcoded fallback value for the Sprout shielded value pool balance
         // for nodes that have not reindexed since the introduction of monitoring
         // in #2795.
-        nSproutValuePoolCheckpointHeight = 313335;
-        nSproutValuePoolCheckpointBalance = 50924382539501;
+        // nSproutValuePoolCheckpointHeight = 313335;
+        // nSproutValuePoolCheckpointBalance = 50924382539501;
         fZIP209Enabled = true;
-        hashSproutValuePoolCheckpointBlock = uint256S("00001531c60bc5d9730693ead57f49ec26d175d548360c47b0cf80af24dc5d28");
+        // hashSproutValuePoolCheckpointBlock = uint256S("00001531c60bc5d9730693ead57f49ec26d175d548360c47b0cf80af24dc5d28");
     }
 };
 static CTestNetParams testNetParams;
