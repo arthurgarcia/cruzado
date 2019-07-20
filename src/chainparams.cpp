@@ -134,6 +134,11 @@ public:
             0x1f07ffff, 4, 0);
 
         consensus.hashGenesisBlock = genesis.GetHash();
+
+        printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
+        printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
+        // printf("last block height for founders = %d\n", consensus.GetLastFoundersRewardBlockHeight());
+
         assert(genesis.hashMerkleRoot == uint256S("0x87800ace8ce2299bbf33ac3f76186ee66be9d7de9a9e22cdba040d3c4776870e"));
         assert(consensus.hashGenesisBlock == uint256S("0x0003f52e78c166a7f44506c152f5e1df1577f21cb7062f863dd8f9a47e125ff9"));
 
