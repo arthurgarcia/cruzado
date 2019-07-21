@@ -146,10 +146,10 @@ public:
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("litecoinz.org", "dnsseed.litecoinz.org")); // cruZado
 
-        // guarantees the first 2 characters, when base58 encoded, are "L1"
-        base58Prefixes[PUBKEY_ADDRESS]     = {0x0A,0xB3};
-        // guarantees the first 2 characters, when base58 encoded, are "L3"
-        base58Prefixes[SCRIPT_ADDRESS]     = {0x0A,0xB8};
+        // guarantees the first 2 characters, when base58 encoded, are "C1"
+        base58Prefixes[PUBKEY_ADDRESS]     = {0x1C,0xB3};
+        // guarantees the first 2 characters, when base58 encoded, are "C3"
+        base58Prefixes[SCRIPT_ADDRESS]     = {0x1C,0xB8};
         // the first character, when base58 encoded, is "5" or "K" or "L" (as in Bitcoin)
         base58Prefixes[SECRET_KEY]         = {0x80};
         // do not rely on these BIP32 prefixes; they are not specified and may change
