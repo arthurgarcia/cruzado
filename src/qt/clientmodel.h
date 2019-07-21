@@ -67,7 +67,7 @@ public:
     //! Return true if core is importing blocks
     enum BlockSource getBlockSource() const;
     //! Return warnings to be displayed in status crz
-    QString getStatusCrzWarnings() const;
+    QString getStatusBarWarnings() const;
 
     QString formatFullVersion() const;
     QString formatSubVersion() const;

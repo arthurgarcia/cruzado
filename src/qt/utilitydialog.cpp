@@ -62,7 +62,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about) :
         licenseInfoHTML.replace("\n", "<br>");
 
         ui->aboutMessage->setTextFormat(Qt::RichText);
-        ui->scrollArea->setVerticalScrollCrzPolicy(Qt::ScrollCrzAsNeeded);
+        ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         text = version + "\n" + licenseInfo;
         ui->aboutMessage->setText(version + "<br><br>" + licenseInfoHTML);
         ui->aboutMessage->setWordWrap(true);

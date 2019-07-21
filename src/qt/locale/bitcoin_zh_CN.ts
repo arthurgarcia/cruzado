@@ -2408,7 +2408,7 @@
     </message>
 </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>金额单位。单击选择别的单位。</translation>

@@ -1991,7 +1991,7 @@ Zwróć uwagę, że poprawnie zweryfikowana wiadomość potwierdza to, że nadaw
     </message>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Jednostka w jakiej pokazywane są kwoty. Kliknij aby wybrać inną.</translation>

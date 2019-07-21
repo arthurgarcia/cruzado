@@ -3710,7 +3710,7 @@
     </message>
 </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <location filename="../bitcoingui.cpp" line="+116"/>
         <source>Unit to show amounts in. Click to select another unit.</source>

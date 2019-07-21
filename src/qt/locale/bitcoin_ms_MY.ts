@@ -7,7 +7,7 @@
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>&amp;Crzu</translation>
+        <translation>&amp;Baru</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
@@ -149,7 +149,7 @@ Alihkan fail data ke dalam tab semasa</translation>
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

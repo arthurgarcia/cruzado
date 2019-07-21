@@ -2862,7 +2862,7 @@
     </message>
 </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Единица измерения количества монет. Щёлкните для выбора другой единицы.</translation>

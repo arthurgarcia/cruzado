@@ -25,7 +25,7 @@ class OptionsModel;
 class PlatformStyle;
 class RPCConsole;
 class SendCoinsRecipient;
-class UnitDisplayStatusCrzControl;
+class UnitDisplayStatusBarControl;
 class WalletFrame;
 class WalletModel;
 class HelpMessageDialog;
@@ -34,7 +34,7 @@ class CWallet;
 
 QT_BEGIN_NAMESPACE
 class QAction;
-class QProgressCrz;
+class QProgressBar;
 class QProgressDialog;
 QT_END_NAMESPACE
 
@@ -81,15 +81,15 @@ private:
     ClientModel *clientModel;
     WalletFrame *walletFrame;
 
-    UnitDisplayStatusCrzControl *unitDisplayControl;
+    UnitDisplayStatusBarControl *unitDisplayControl;
     QLabel *labelEncryptionIcon;
     QLabel *labelConnectionsIcon;
     QLabel *labelBlocksIcon;
-    QLabel *progressCrzLabel;
-    QProgressCrz *progressCrz;
+    QLabel *progressBarLabel;
+    QProgressBar *progressBar;
     QProgressDialog *progressDialog;
 
-    QMenuCrz *appMenuCrz;
+    QMenuBar *appMenuBar;
     QAction *overviewAction;
     QAction *historyAction;
     QAction *quitAction;
@@ -129,9 +129,9 @@ private:
     /** Create the main UI actions. */
     void createActions();
     /** Create the menu crz and sub-menus. */
-    void createMenuCrz();
+    void createMenuBar();
     /** Create the toolcrzs */
-    void createToolCrzs();
+    void createToolBars();
     /** Create system tray icon and notification */
     void createTrayIcon(const NetworkStyle *networkStyle);
     /** Create system tray menu (or setup the dock menu) */
@@ -229,12 +229,12 @@ private Q_SLOTS:
     void setTrayIconVisible(bool);
 };
 
-class UnitDisplayStatusCrzControl : public QLabel
+class UnitDisplayStatusBarControl : public QLabel
 {
     Q_OBJECT
 
 public:
-    explicit UnitDisplayStatusCrzControl(const PlatformStyle *platformStyle);
+    explicit UnitDisplayStatusBarControl(const PlatformStyle *platformStyle);
     /** Lets the control know about the Options Model (and its signals) */
     void setOptionsModel(OptionsModel *optionsModel);
 

@@ -19,7 +19,7 @@
 #include <QCursor>
 #include <QItemSelection>
 #include <QMessageBox>
-#include <QScrollCrz>
+#include <QScrollBar>
 #include <QTextDocument>
 
 ReceiveCoinsDialog::ReceiveCoinsDialog(const PlatformStyle *platformStyle, QWidget *parent) :
@@ -76,7 +76,7 @@ void ReceiveCoinsDialog::setModel(WalletModel *model)
         QTableView* tableView = ui->recentRequestsView;
 
         tableView->verticalHeader()->hide();
-        tableView->setHorizontalScrollCrzPolicy(Qt::ScrollCrzAlwaysOff);
+        tableView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         tableView->setModel(model->getRecentRequestsTableModel());
         tableView->setAlternatingRowColors(true);
         tableView->setSelectionBehavior(QAbstractItemView::SelectRows);

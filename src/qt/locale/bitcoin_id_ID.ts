@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>&amp;Crzu</translation>
+        <translation>&amp;Baru</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
@@ -227,7 +227,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzis tab</translation>
+        <translation>Baris tab</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -1376,7 +1376,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

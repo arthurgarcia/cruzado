@@ -526,7 +526,7 @@
     <name>SendCoinsPage</name>
     <message>
         <source>Send Coins</source>
-        <translation>Magpadalang Crzya</translation>
+        <translation>Magpadalang Barya</translation>
     </message>
     <message>
         <source>Insufficient funds!</source>
@@ -700,7 +700,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

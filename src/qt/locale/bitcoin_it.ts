@@ -239,7 +239,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzra degli strumenti</translation>
+        <translation>Barra degli strumenti</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -1743,7 +1743,7 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Unità con cui visualizzare gli importi. Clicca per selezionare un'altra unità.</translation>

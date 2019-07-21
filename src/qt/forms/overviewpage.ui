@@ -747,11 +747,11 @@
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
-            <property name="verticalScrollCrzPolicy">
-             <enum>Qt::ScrollCrzAlwaysOff</enum>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
             </property>
-            <property name="horizontalScrollCrzPolicy">
-             <enum>Qt::ScrollCrzAlwaysOff</enum>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
             </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::NoSelection</enum>

@@ -28,7 +28,7 @@
 #include "resultsdialog.h"
 
 #include <QMessageBox>
-#include <QScrollCrz>
+#include <QScrollBar>
 #include <QTextDocument>
 #include <QTimer>
 
@@ -384,7 +384,7 @@ SendZCoinsEntry *SendZCoinsDialog::addEntry()
     entry->setFocus();
     ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->sizeHint());
     qApp->processEvents();
-    QScrollCrz* crz = ui->scrollArea->verticalScrollCrz();
+    QScrollBar* crz = ui->scrollArea->verticalScrollBar();
     if(crz)
         crz->setSliderPosition(crz->maximum());
 

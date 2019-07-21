@@ -144,7 +144,7 @@ void ClientModel::updateNumConnections(int numConnections)
 
 void ClientModel::updateAlert()
 {
-    Q_EMIT alertsChanged(getStatusCrzWarnings());
+    Q_EMIT alertsChanged(getStatusBarWarnings());
 }
 
 bool ClientModel::inInitialBlockDownload() const
@@ -164,7 +164,7 @@ enum BlockSource ClientModel::getBlockSource() const
     return BLOCK_SOURCE_NONE;
 }
 
-QString ClientModel::getStatusCrzWarnings() const
+QString ClientModel::getStatusBarWarnings() const
 {
     return QString::fromStdString(GetWarnings("gui"));
 }

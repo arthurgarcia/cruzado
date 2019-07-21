@@ -863,8 +863,8 @@
          </property>
          <item>
           <widget class="QTableView" name="peerWidget">
-           <property name="horizontalScrollCrzPolicy">
-            <enum>Qt::ScrollCrzAsNeeded</enum>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
            </property>
            <property name="tabKeyNavigation">
             <bool>false</bool>
@@ -927,8 +927,8 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="horizontalScrollCrzPolicy">
-            <enum>Qt::ScrollCrzAsNeeded</enum>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
            </property>
            <property name="tabKeyNavigation">
             <bool>false</bool>

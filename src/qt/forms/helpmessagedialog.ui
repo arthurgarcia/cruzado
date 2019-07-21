@@ -88,8 +88,8 @@
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
        </property>
-       <property name="verticalScrollCrzPolicy">
-        <enum>Qt::ScrollCrzAlwaysOn</enum>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
        </property>
        <property name="widgetResizable">
         <bool>true</bool>

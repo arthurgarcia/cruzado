@@ -2866,7 +2866,7 @@
     </message>
 </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>金額顯示單位。可以點選其他單位。</translation>

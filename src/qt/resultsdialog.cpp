@@ -25,7 +25,7 @@ ResultsDialog::ResultsDialog(QWidget *parent) :
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowTitleHint);
 
     ui->buttonBox->hide();
-    ui->progressCrz->hide();
+    ui->progressBar->hide();
 
     ui->labelRecord->setVisible(false);
     ui->labelRecordText->setVisible(false);
@@ -42,11 +42,11 @@ int ResultsDialog::exec()
     counter = 0;
     skipEsc = true;
 
-    ui->progressCrz->setValue(counter);
-    ui->progressCrz->setMinimum(0);
-    ui->progressCrz->show();
+    ui->progressBar->setValue(counter);
+    ui->progressBar->setMinimum(0);
+    ui->progressBar->show();
 
-    connect(&timer, SIGNAL(timeout()), this, SLOT(updateProgressCrz()));
+    connect(&timer, SIGNAL(timeout()), this, SLOT(updateProgressBar()));
     timer.start(1000);
     return QDialog::exec();
 }
@@ -78,7 +78,7 @@ void ResultsDialog::setLabels(QString label1, QString label2)
     resize(qs);
 }
 
-void ResultsDialog::updateProgressCrz()
+void ResultsDialog::updateProgressBar()
 {
     try {
         /* Check and display the operation status */
@@ -123,13 +123,13 @@ void ResultsDialog::updateProgressCrz()
     if((strStatus == "executing") || (strStatus == "queued"))
     {
         counter++;
-        ui->progressCrz->setValue(counter);
+        ui->progressBar->setValue(counter);
     }
     else
     {
         timer.stop();
-        ui->progressCrz->setValue(100);
-        ui->progressCrz->hide();
+        ui->progressBar->setValue(100);
+        ui->progressBar->hide();
         ui->buttonBox->show();
         skipEsc = false;
     }

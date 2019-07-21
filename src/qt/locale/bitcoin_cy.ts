@@ -147,7 +147,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crz offer tabiau</translation>
+        <translation>Bar offer tabiau</translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
@@ -472,7 +472,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

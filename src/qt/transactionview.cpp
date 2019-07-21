@@ -29,7 +29,7 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QPoint>
-#include <QScrollCrz>
+#include <QScrollBar>
 #include <QSignalMapper>
 #include <QTableView>
 #include <QUrl>
@@ -121,7 +121,7 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     vlayout->addWidget(createDateRangeWidget());
     vlayout->addWidget(view);
     vlayout->setSpacing(0);
-    int width = view->verticalScrollCrz()->sizeHint().width();
+    int width = view->verticalScrollBar()->sizeHint().width();
     // Cover scroll crz width with spacing
     if (platformStyle->getUseExtraSpacing()) {
         hlayout->addSpacing(width+2);
@@ -129,7 +129,7 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
         hlayout->addSpacing(width);
     }
     // Always show scroll crz
-    view->setVerticalScrollCrzPolicy(Qt::ScrollCrzAlwaysOn);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     view->setTabKeyNavigation(false);
     view->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -194,7 +194,7 @@ void TransactionView::setModel(WalletModel *model)
 
         transactionProxyModel->setSortRole(Qt::EditRole);
 
-        transactionView->setHorizontalScrollCrzPolicy(Qt::ScrollCrzAlwaysOff);
+        transactionView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);

@@ -1746,7 +1746,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Meblağları göstermek için birim. Başka bir birim seçmek için tıklayınız.</translation>

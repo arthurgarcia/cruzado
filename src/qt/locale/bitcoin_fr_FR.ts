@@ -235,7 +235,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzre d'outils des onglets</translation>
+        <translation>Barre d'outils des onglets</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -1342,7 +1342,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

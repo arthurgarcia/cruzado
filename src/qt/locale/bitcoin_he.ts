@@ -1604,7 +1604,7 @@
     </message>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>יחידת המידה להצגת הסכומים. יש ללחוץ כדי לבחור ביחידת מידה אחרת.</translation>

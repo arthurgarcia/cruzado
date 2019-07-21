@@ -11,7 +11,7 @@
 #include <QHeaderView>
 #include <QMessageBox>
 #include <QObject>
-#include <QProgressCrz>
+#include <QProgressBar>
 #include <QString>
 #include <QTableView>
 
@@ -207,15 +207,15 @@ namespace GUIUtil
 #if defined(Q_OS_MAC) && QT_VERSION >= 0x050000
     // workaround for Qt OSX Bug:
     // https://bugreports.qt-project.org/browse/QTBUG-15631
-    // QProgressCrz uses around 10% CPU even when app is in background
-    class ProgressCrz : public QProgressCrz
+    // QProgressBar uses around 10% CPU even when app is in background
+    class ProgressBar : public QProgressBar
     {
         bool event(QEvent *e) {
-            return (e->type() != QEvent::StyleAnimationUpdate) ? QProgressCrz::event(e) : false;
+            return (e->type() != QEvent::StyleAnimationUpdate) ? QProgressBar::event(e) : false;
         }
     };
 #else
-    typedef QProgressCrz ProgressCrz;
+    typedef QProgressBar ProgressBar;
 #endif
 
 } // namespace GUIUtil

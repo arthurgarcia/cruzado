@@ -1987,7 +1987,7 @@ Var vänlig och försök igen.</translation>
     </message>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>&amp;Enhet att visa belopp i. Klicka för att välja annan enhet.</translation>

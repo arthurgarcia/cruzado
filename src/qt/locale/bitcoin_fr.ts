@@ -395,7 +395,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzre d'outils des onglets</translation>
+        <translation>Barre d'outils des onglets</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -2866,7 +2866,7 @@
     </message>
 </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Unité d'affichage des montants. Cliquer pour choisir une autre unité.</translation>

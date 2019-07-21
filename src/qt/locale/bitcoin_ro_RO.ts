@@ -227,7 +227,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crza de unelte</translation>
+        <translation>Bara de unelte</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -1566,7 +1566,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Unitatea în care sînt arătate sumele. Faceţi clic pentru a selecta o altă unitate.</translation>

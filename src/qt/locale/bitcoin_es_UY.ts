@@ -143,7 +143,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzra de herramientas</translation>
+        <translation>Barra de herramientas</translation>
     </message>
     <message>
         <source>Error</source>
@@ -427,7 +427,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

@@ -42,18 +42,18 @@
 #include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QListWidget>
-#include <QMenuCrz>
+#include <QMenuBar>
 #include <QMessageBox>
 #include <QMimeData>
-#include <QProgressCrz>
+#include <QProgressBar>
 #include <QProgressDialog>
 #include <QSettings>
 #include <QShortcut>
 #include <QStackedWidget>
-#include <QStatusCrz>
+#include <QStatusBar>
 #include <QStyle>
 #include <QTimer>
-#include <QToolCrz>
+#include <QToolBar>
 #include <QVBoxLayout>
 
 #if QT_VERSION < 0x050000
@@ -83,10 +83,10 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     labelEncryptionIcon(0),
     labelConnectionsIcon(0),
     labelBlocksIcon(0),
-    progressCrzLabel(0),
-    progressCrz(0),
+    progressBarLabel(0),
+    progressBar(0),
     progressDialog(0),
-    appMenuCrz(0),
+    appMenuBar(0),
     overviewAction(0),
     historyAction(0),
     quitAction(0),
@@ -148,8 +148,8 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
 
 #if defined(Q_OS_MAC) && QT_VERSION < 0x050000
     // This property is not implemented in Qt 5. Setting it has no effect.
-    // A replacement API (QtMacUnifiedToolCrz) is available in QtMacExtras.
-    setUnifiedTitleAndToolCrzOnMac(true);
+    // A replacement API (QtMacUnifiedToolBar) is available in QtMacExtras.
+    setUnifiedTitleAndToolBarOnMac(true);
 #endif
 
     rpcConsole = new RPCConsole(platformStyle, 0);
@@ -177,19 +177,19 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     createActions();
 
     // Create application menu crz
-    createMenuCrz();
+    createMenuBar();
 
     // Create the toolcrzs
-    createToolCrzs();
+    createToolBars();
 
     // Create system tray icon and notification
     createTrayIcon(networkStyle);
 
     // Create status crz
-    statusCrz();
+    statusBar();
 
     // Disable size grip because it looks ugly and nobody needs it
-    statusCrz()->setSizeGripEnabled(false);
+    statusBar()->setSizeGripEnabled(false);
 
     // Status crz notification icons
     QFrame *frameBlocks = new QFrame();
@@ -198,7 +198,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
-    unitDisplayControl = new UnitDisplayStatusCrzControl(platformStyle);
+    unitDisplayControl = new UnitDisplayStatusBarControl(platformStyle);
     labelEncryptionIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
     labelBlocksIcon = new QLabel();
@@ -216,11 +216,11 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     frameBlocksLayout->addStretch();
 
     // Progress crz and label for blocks download
-    progressCrzLabel = new QLabel();
-    progressCrzLabel->setVisible(false);
-    progressCrz = new GUIUtil::ProgressCrz();
-    progressCrz->setAlignment(Qt::AlignCenter);
-    progressCrz->setVisible(false);
+    progressBarLabel = new QLabel();
+    progressBarLabel->setVisible(false);
+    progressBar = new GUIUtil::ProgressBar();
+    progressBar->setAlignment(Qt::AlignCenter);
+    progressBar->setVisible(false);
 
     // Override style sheet for progress crz for styles that have a segmented progress crz,
     // as they make the text unreadable (workaround for issue #1071)
@@ -228,12 +228,12 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     QString curStyle = QApplication::style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressCrz->setStyleSheet("QProgressCrz { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressCrz::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
+        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
     }
 
-    statusCrz()->addWidget(progressCrzLabel);
-    statusCrz()->addWidget(progressCrz);
-    statusCrz()->addPermanentWidget(frameBlocks);
+    statusBar()->addWidget(progressBarLabel);
+    statusBar()->addWidget(progressBar);
+    statusBar()->addPermanentWidget(frameBlocks);
 
     // Install event filter to be able to catch status tip events (QEvent::StatusTip)
     this->installEventFilter(this);
@@ -254,7 +254,7 @@ BitcoinGUI::~BitcoinGUI()
     if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
         trayIcon->hide();
 #ifdef Q_OS_MAC
-    delete appMenuCrz;
+    delete appMenuBar;
     MacDockIconHandler::cleanup();
 #endif
 
@@ -418,18 +418,18 @@ void BitcoinGUI::createActions()
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
 }
 
-void BitcoinGUI::createMenuCrz()
+void BitcoinGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu crz on Mac which stays even if the window is closed
-    appMenuCrz = new QMenuCrz();
+    appMenuBar = new QMenuBar();
 #else
     // Get the main window's menu crz on other platforms
-    appMenuCrz = menuCrz();
+    appMenuBar = menuBar();
 #endif
 
     // Configure the menus
-    QMenu *file = appMenuCrz->addMenu(tr("&File"));
+    QMenu *file = appMenuBar->addMenu(tr("&File"));
     if(walletFrame)
     {
         file->addAction(openAction);
@@ -440,7 +440,7 @@ void BitcoinGUI::createMenuCrz()
     }
     file->addAction(quitAction);
 
-    QMenu *settings = appMenuCrz->addMenu(tr("&Settings"));
+    QMenu *settings = appMenuBar->addMenu(tr("&Settings"));
 //    if(walletFrame)
 //    {
 //        settings->addAction(encryptWalletAction);
@@ -449,7 +449,7 @@ void BitcoinGUI::createMenuCrz()
 //    }
     settings->addAction(optionsAction);
 
-    QMenu *help = appMenuCrz->addMenu(tr("&Help"));
+    QMenu *help = appMenuBar->addMenu(tr("&Help"));
     if(walletFrame)
     {
         help->addAction(openRPCConsoleAction);
@@ -460,16 +460,16 @@ void BitcoinGUI::createMenuCrz()
     help->addAction(aboutQtAction);
 }
 
-void BitcoinGUI::createToolCrzs()
+void BitcoinGUI::createToolBars()
 {
     if(walletFrame)
     {
         QSize iconSize(24, 24);
 
-        QToolCrz *toolcrz = addToolCrz(tr("Tabs toolcrz"));
+        QToolBar *toolcrz = addToolBar(tr("Tabs toolcrz"));
         toolcrz->setMovable(false);
 
-        addToolCrz(Qt::LeftToolCrzArea, toolcrz);
+        addToolBar(Qt::LeftToolBarArea, toolcrz);
         toolcrz->setIconSize(iconSize);
         toolcrz->setOrientation(Qt::Vertical);
         toolcrz->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -777,23 +777,23 @@ void BitcoinGUI::setNumBlocks(int count, const QDateTime& blockDate)
         return;
 
     // Prevent orphan statuscrz messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
-    statusCrz()->clearMessage();
+    statusBar()->clearMessage();
 
     // Acquire current block source
     enum BlockSource blockSource = clientModel->getBlockSource();
     switch (blockSource) {
         case BLOCK_SOURCE_NETWORK:
-            progressCrzLabel->setText(tr("Synchronizing with network..."));
+            progressBarLabel->setText(tr("Synchronizing with network..."));
             break;
         case BLOCK_SOURCE_DISK:
-            progressCrzLabel->setText(tr("Importing blocks from disk..."));
+            progressBarLabel->setText(tr("Importing blocks from disk..."));
             break;
         case BLOCK_SOURCE_REINDEX:
-            progressCrzLabel->setText(tr("Reindexing blocks on disk..."));
+            progressBarLabel->setText(tr("Reindexing blocks on disk..."));
             break;
         case BLOCK_SOURCE_NONE:
             // Case: not Importing, not Reindexing and no network connection
-            progressCrzLabel->setText(tr("No block source available..."));
+            progressBarLabel->setText(tr("No block source available..."));
             break;
     }
 
@@ -815,8 +815,8 @@ void BitcoinGUI::setNumBlocks(int count, const QDateTime& blockDate)
             walletFrame->showOutOfSyncWarning(false);
 #endif // ENABLE_WALLET
 
-        progressCrzLabel->setVisible(false);
-        progressCrz->setVisible(false);
+        progressBarLabel->setVisible(false);
+        progressBar->setVisible(false);
     }
     else
     {
@@ -845,11 +845,11 @@ void BitcoinGUI::setNumBlocks(int count, const QDateTime& blockDate)
             timeBehindText = tr("%1 and %2").arg(tr("%n year(s)", "", years)).arg(tr("%n week(s)","", remainder/WEEK_IN_SECONDS));
         }
 
-        progressCrzLabel->setVisible(true);
-        progressCrz->setFormat(tr("%1 behind").arg(timeBehindText));
-        progressCrz->setMaximum(1000000000);
-        progressCrz->setValue(clientModel->getVerificationProgress() * 1000000000.0 + 0.5);
-        progressCrz->setVisible(true);
+        progressBarLabel->setVisible(true);
+        progressBar->setFormat(tr("%1 behind").arg(timeBehindText));
+        progressBar->setMaximum(1000000000);
+        progressBar->setValue(clientModel->getVerificationProgress() * 1000000000.0 + 0.5);
+        progressBar->setVisible(true);
 
         tooltip = tr("Catching up...") + QString("<br>") + tooltip;
         if(count != prevBlocks)
@@ -876,8 +876,8 @@ void BitcoinGUI::setNumBlocks(int count, const QDateTime& blockDate)
     tooltip = QString("<nobr>") + tooltip + QString("</nobr>");
 
     labelBlocksIcon->setToolTip(tooltip);
-    progressCrzLabel->setToolTip(tooltip);
-    progressCrz->setToolTip(tooltip);
+    progressBarLabel->setToolTip(tooltip);
+    progressBar->setToolTip(tooltip);
 }
 
 void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
@@ -1030,7 +1030,7 @@ bool BitcoinGUI::eventFilter(QObject *object, QEvent *event)
     if (event->type() == QEvent::StatusTip)
     {
         // Prevent adding text from setStatusTip(), if we currently use the status crz for displaying other stuff
-        if (progressCrzLabel->isVisible() || progressCrz->isVisible())
+        if (progressBarLabel->isVisible() || progressBar->isVisible())
             return true;
     }
     return QMainWindow::eventFilter(object, event);
@@ -1181,7 +1181,7 @@ void BitcoinGUI::unsubscribeFromCoreSignals()
     uiInterface.ThreadSafeQuestion.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-UnitDisplayStatusCrzControl::UnitDisplayStatusCrzControl(const PlatformStyle *platformStyle) :
+UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *platformStyle) :
     optionsModel(0),
     menu(0)
 {
@@ -1200,13 +1200,13 @@ UnitDisplayStatusCrzControl::UnitDisplayStatusCrzControl(const PlatformStyle *pl
 }
 
 /** So that it responds to button clicks */
-void UnitDisplayStatusCrzControl::mousePressEvent(QMouseEvent *event)
+void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event)
 {
     onDisplayUnitsClicked(event->pos());
 }
 
 /** Creates context menu, its actions, and wires up all the relevant signals for mouse events. */
-void UnitDisplayStatusCrzControl::createContextMenu()
+void UnitDisplayStatusBarControl::createContextMenu()
 {
     menu = new QMenu(this);
     Q_FOREACH(BitcoinUnits::Unit u, BitcoinUnits::availableUnits())
@@ -1219,7 +1219,7 @@ void UnitDisplayStatusCrzControl::createContextMenu()
 }
 
 /** Lets the control know about the Options Model (and its signals) */
-void UnitDisplayStatusCrzControl::setOptionsModel(OptionsModel *optionsModel)
+void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *optionsModel)
 {
     if (optionsModel)
     {
@@ -1234,20 +1234,20 @@ void UnitDisplayStatusCrzControl::setOptionsModel(OptionsModel *optionsModel)
 }
 
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status crz */
-void UnitDisplayStatusCrzControl::updateDisplayUnit(int newUnits)
+void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
     setText(BitcoinUnits::name(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */
-void UnitDisplayStatusCrzControl::onDisplayUnitsClicked(const QPoint& point)
+void UnitDisplayStatusBarControl::onDisplayUnitsClicked(const QPoint& point)
 {
     QPoint globalPos = mapToGlobal(point);
     menu->exec(globalPos);
 }
 
 /** Tells underlying optionsModel to update its current display unit. */
-void UnitDisplayStatusCrzControl::onMenuSelection(QAction* action)
+void UnitDisplayStatusBarControl::onMenuSelection(QAction* action)
 {
     if (action)
     {

@@ -203,7 +203,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzra de pestañas</translation>
+        <translation>Barra de pestañas</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -740,7 +740,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>

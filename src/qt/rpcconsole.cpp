@@ -30,7 +30,7 @@
 
 #include <QKeyEvent>
 #include <QMenu>
-#include <QScrollCrz>
+#include <QScrollBar>
 #include <QSettings>
 #include <QSignalMapper>
 #include <QThread>
@@ -544,10 +544,10 @@ void RPCConsole::setFontSize(int newSize)
     settings.setValue(fontSizeSettingsKey, consoleFontSize);
 
     // clear console (reset icon sizes, default stylesheet) and re-add the content
-    float oldPosFactor = 1.0 / ui->messagesWidget->verticalScrollCrz()->maximum() * ui->messagesWidget->verticalScrollCrz()->value();
+    float oldPosFactor = 1.0 / ui->messagesWidget->verticalScrollBar()->maximum() * ui->messagesWidget->verticalScrollBar()->value();
     clear(false);
     ui->messagesWidget->setHtml(str);
-    ui->messagesWidget->verticalScrollCrz()->setValue(oldPosFactor * ui->messagesWidget->verticalScrollCrz()->maximum());
+    ui->messagesWidget->verticalScrollBar()->setValue(oldPosFactor * ui->messagesWidget->verticalScrollBar()->maximum());
 }
 
 void RPCConsole::clear(bool clearHistory)
@@ -725,7 +725,7 @@ void RPCConsole::on_openDebugLogfileButton_clicked()
 
 void RPCConsole::scrollToEnd()
 {
-    QScrollCrz *scrollcrz = ui->messagesWidget->verticalScrollCrz();
+    QScrollBar *scrollcrz = ui->messagesWidget->verticalScrollBar();
     scrollcrz->setValue(scrollcrz->maximum());
 }
 

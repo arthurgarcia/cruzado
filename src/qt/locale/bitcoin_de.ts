@@ -2430,7 +2430,7 @@
     </message>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Die Einheit in der Beträge angezeigt werden. Klicken, um eine andere Einheit auszuwählen.</translation>

@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzra d'eines de les pestanyes</translation>
+        <translation>Barra d'eines de les pestanyes</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -1526,7 +1526,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Unitat en què mostrar els imports. Feu clic per seleccionar una altra unitat.</translation>

@@ -1584,7 +1584,7 @@
     </message>
     <message>
         <source>You can sign messages/agreements with your addresses to prove you can receive cruzados sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Du kan signere meldinger/avtaler med adresser for å bevise at du kan motta cruzados sendt til dem. Vær forsiktig med å signere noe vagt eller tilfeldig, siden phishing-angrep kan prøve å lure deg til å signere din identitet over til dem. Crze signer fullt detaljerte utsagn som du er enig i.</translation>
+        <translation>Du kan signere meldinger/avtaler med adresser for å bevise at du kan motta cruzados sendt til dem. Vær forsiktig med å signere noe vagt eller tilfeldig, siden phishing-angrep kan prøve å lure deg til å signere din identitet over til dem. Bare signer fullt detaljerte utsagn som du er enig i.</translation>
     </message>
     <message>
         <source>The cruZado address to sign the message with</source>
@@ -1690,7 +1690,7 @@
     <name>TransactionView</name>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Enhet å vise beløper i. Klikk for å velge en annen enhet.</translation>
@@ -1921,7 +1921,7 @@
     </message>
     <message>
         <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
-        <translation>Crze koble til noder i nettverket &lt;net&gt; (IPv4, IPv6 eller onion)</translation>
+        <translation>Bare koble til noder i nettverket &lt;net&gt; (IPv4, IPv6 eller onion)</translation>
     </message>
     <message>
         <source>Print this help message and exit</source>

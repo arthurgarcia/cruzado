@@ -395,7 +395,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Crzra de pestañas</translation>
+        <translation>Barra de pestañas</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and cruzado: URIs)</source>
@@ -2866,7 +2866,7 @@
     </message>
 </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Unidad en la que se muestran las cantidades. Haga clic para seleccionar otra unidad.</translation>

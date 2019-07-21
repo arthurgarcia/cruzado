@@ -45,7 +45,7 @@ private:
     bool skipEsc;
 
 private Q_SLOTS:
-    void updateProgressCrz();
+    void updateProgressBar();
 };
 
 #endif // BITCOIN_QT_RESULTSDIALOG_H

@@ -225,7 +225,7 @@ void OverviewPage::setClientModel(ClientModel *model)
     {
         // Show warning if this is a prerelease version
         connect(model, SIGNAL(alertsChanged(QString)), this, SLOT(updateAlerts(QString)));
-        updateAlerts(model->getStatusCrzWarnings());
+        updateAlerts(model->getStatusBarWarnings());
     }
 }
 

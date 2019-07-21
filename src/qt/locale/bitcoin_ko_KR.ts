@@ -1774,7 +1774,7 @@
     </message>
     </context>
 <context>
-    <name>UnitDisplayStatusCrzControl</name>
+    <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>거래액을 표시하는 단위. 클릭해서 다른 단위를 선택할 수 있습니다.</translation>
