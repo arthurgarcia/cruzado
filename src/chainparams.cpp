@@ -118,13 +118,13 @@ public:
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000003cbab61c14c");
 
-        pchMessageStart[0] = 0xd8;
-        pchMessageStart[1] = 0xcf;
-        pchMessageStart[2] = 0xcd;
-        pchMessageStart[3] = 0x93;
+        pchMessageStart[0] = 0x7b;
+        pchMessageStart[1] = 0x46;
+        pchMessageStart[2] = 0x8a;
+        pchMessageStart[3] = 0xd6;
         vAlertPubKey = ParseHex("048c64efd9e320f8dc6ab14f3e2c674877fe1b027f62afaffdd46ee4a191b3be90dd5a3bf8c7f6b2205dbde788793e97a645a16c2d8bede3dca0182dfc3cc15137");
 
-        nDefaultPort = 29333;
+        nDefaultPort = 30333;
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(
@@ -135,8 +135,8 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
-        printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
+        //printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
         // printf("last block height for founders = %d\n", consensus.GetLastFoundersRewardBlockHeight());
 
         assert(genesis.hashMerkleRoot == uint256S("0x7a80676ed85e50411f14a94276b58ac6cc674d7909f3b038ddb583fbdd35a579"));
@@ -245,13 +245,14 @@ public:
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000f1eb9b");
 
-        pchMessageStart[0] = 0xfe;
-        pchMessageStart[1] = 0x90;
-        pchMessageStart[2] = 0x86;
-        pchMessageStart[3] = 0x5d;
+        pchMessageStart[0] = 0x1a;
+        pchMessageStart[1] = 0xc7;
+        pchMessageStart[2] = 0xd9;
+        pchMessageStart[3] = 0x71;
+
         vAlertPubKey = ParseHex("04a820f404086f812ba6effc156bc7fba4b3248e002be5f44de573301805263700081df39e0e84d3aead611c2da1f89cce353cf2c6643c14651e3f91acdba255f3");
 
-        nDefaultPort = 39333;
+        nDefaultPort = 40333;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(
@@ -262,8 +263,8 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
-        printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
+        //printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
 
         assert(genesis.hashMerkleRoot == uint256S("0x7a80676ed85e50411f14a94276b58ac6cc674d7909f3b038ddb583fbdd35a579"));
         assert(consensus.hashGenesisBlock == uint256S("0x0caf8bd6e4542b9f48e28b7cedcd75c9242cf16101361170ec36a13523a12bd5"));
@@ -370,10 +371,10 @@ public:
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
 
-        pchMessageStart[0] = 0xea;
-        pchMessageStart[1] = 0x8c;
-        pchMessageStart[2] = 0x71;
-        pchMessageStart[3] = 0x19;
+        pchMessageStart[0] = 0xf0;
+        pchMessageStart[1] = 0x0b;
+        pchMessageStart[2] = 0xba;
+        pchMessageStart[3] = 0x8c;
 
         nDefaultPort = 49444;
         nPruneAfterHeight = 1000;
@@ -386,8 +387,8 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
-        printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("hashGenesisBlock = uint256(\"0x%s\");\n", genesis.GetHash().ToString().c_str());
+        //printf("hashMerkleRoot = uint256(\"0x%s\");\n", genesis.hashMerkleRoot.ToString().c_str());
 
         assert(genesis.hashMerkleRoot == uint256S("0x7a80676ed85e50411f14a94276b58ac6cc674d7909f3b038ddb583fbdd35a579"));
         assert(consensus.hashGenesisBlock == uint256S("0x0807477c32c5ae62600b79d42073de83dfbc646c94a1ed7d8fef042dff3039bd"));

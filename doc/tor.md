@@ -40,11 +40,11 @@ config file): *Needed for Tor version 0.2.7.0 and older versions of Tor only. Fo
 versions of Tor see [Section 3](#3-automatically-listen-on-tor).*
 
 	HiddenServiceDir /var/lib/tor/cruzado-service/
-	HiddenServicePort 29333 127.0.0.1:29333
-	HiddenServicePort 19333 127.0.0.1:39333
+	HiddenServicePort 30333 127.0.0.1:30333
+	HiddenServicePort 19333 127.0.0.1:40333
 
 The directory can be different of course, but (both) port numbers should be equal to
-your cruzadod's P2P listen port (29333 by default).
+your cruzadod's P2P listen port (30333 by default).
 
 	-externalip=X   You can tell cruzado about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
@@ -79,7 +79,7 @@ as well, use `discover` instead:
 
 	./cruzadod ... -discover
 
-and open port 29333 on your firewall (or use -upnp).
+and open port 30333 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach .onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
