@@ -1,0 +1,1 @@
+HOST=x86_64-pc-linux-gnu CC=gcc CXX=g++ CONFIG_SITE=/media/arthur/6b82bcf7-e905-4fe2-89bf-f333aae18b2c/mnt/litecoinz/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/media/arthur/6b82bcf7-e905-4fe2-89bf-f333aae18b2c/mnt/litecoinz/depends/x86_64-pc-linux-gnu/ --enable-hardening CXXFLAGS=-g
