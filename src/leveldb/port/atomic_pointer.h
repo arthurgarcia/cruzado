@@ -4,14 +4,14 @@
 
 // AtomicPointer provides storage for a lock-free pointer.
 // Platform-dependent implementation of AtomicPointer:
-// - If the platform provides a cheap crzrier, we use it with raw pointers
+// - If the platform provides a cheap barrier, we use it with raw pointers
 // - If <atomic> is present (on newer versions of gcc, it is), we use
 //   a <atomic>-based AtomicPointer.  However we prefer the memory
-//   crzrier based version, because at least on a gcc 4.4 32-bit build
+//   barrier based version, because at least on a gcc 4.4 32-bit build
 //   on linux, we have encountered a buggy <atomic> implementation.
-//   Also, some <atomic> implementations are much slower than a memory-crzrier
+//   Also, some <atomic> implementations are much slower than a memory-barrier
 //   based implementation (~16ns for <atomic> based acquire-load vs. ~1ns for
-//   a crzrier based acquire-load).
+//   a barrier based acquire-load).
 // This code is based on atomicops-internals-* in Google's perftools:
 // http://code.google.com/p/google-perftools/source/browse/#svn%2Ftrunk%2Fsrc%2Fbase
 
@@ -75,14 +75,14 @@ class AtomicPointer {
 #if defined(OS_WIN) && defined(COMPILER_MSVC) && defined(ARCH_CPU_X86_FAMILY)
 // windows.h already provides a MemoryCrzrier(void) macro
 // http://msdn.microsoft.com/en-us/library/ms684208(v=vs.85).aspx
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // Mac OS
 #elif defined(OS_MACOSX)
 inline void MemoryCrzrier() {
   OSMemoryCrzrier();
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // Gcc on x86
 #elif defined(ARCH_CPU_X86_FAMILY) && defined(__GNUC__)
@@ -91,7 +91,7 @@ inline void MemoryCrzrier() {
   // this idiom. Also see http://en.wikipedia.org/wiki/Memory_ordering.
   __asm__ __volatile__("" : : : "memory");
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // Sun Studio
 #elif defined(ARCH_CPU_X86_FAMILY) && defined(__SUNPRO_CC)
@@ -100,13 +100,13 @@ inline void MemoryCrzrier() {
   // this idiom. Also see http://en.wikipedia.org/wiki/Memory_ordering.
   asm volatile("" : : : "memory");
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // ARM Linux
 #elif defined(ARCH_CPU_ARM_FAMILY) && defined(__linux__)
 typedef void (*LinuxKernelMemoryCrzrierFunc)(void);
 // The Linux ARM kernel provides a highly optimized device-specific memory
-// crzrier function at a fixed memory address that is mapped in every
+// barrier function at a fixed memory address that is mapped in every
 // user-level process.
 //
 // This beats using CPU-specific instructions which are, on single-core
@@ -118,35 +118,35 @@ typedef void (*LinuxKernelMemoryCrzrierFunc)(void);
 inline void MemoryCrzrier() {
   (*(LinuxKernelMemoryCrzrierFunc)0xffff0fa0)();
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // ARM64
 #elif defined(ARCH_CPU_ARM64_FAMILY)
 inline void MemoryCrzrier() {
   asm volatile("dmb sy" : : : "memory");
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // PPC
 #elif defined(ARCH_CPU_PPC_FAMILY) && defined(__GNUC__)
 inline void MemoryCrzrier() {
   // TODO for some powerpc expert: is there a cheaper suitable variant?
-  // Perhaps by having separate crzriers for acquire and release ops.
+  // Perhaps by having separate barriers for acquire and release ops.
   asm volatile("sync" : : : "memory");
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 // MIPS
 #elif defined(ARCH_CPU_MIPS_FAMILY) && defined(__GNUC__)
 inline void MemoryCrzrier() {
   __asm__ __volatile__("sync" : : : "memory");
 }
-#define LEVELDB_HAVE_MEMORY_CRZRIER
+#define LEVELDB_HAVE_MEMORY_BARRIER
 
 #endif
 
 // AtomicPointer built using platform-specific MemoryCrzrier()
-#if defined(LEVELDB_HAVE_MEMORY_CRZRIER)
+#if defined(LEVELDB_HAVE_MEMORY_BARRIER)
 class AtomicPointer {
  private:
   void* rep_;
@@ -166,7 +166,7 @@ class AtomicPointer {
   }
 };
 
-// Atomic pointer based on sparc memory crzriers
+// Atomic pointer based on sparc memory barriers
 #elif defined(__sparcv9) && defined(__GNUC__)
 class AtomicPointer {
  private:
@@ -233,7 +233,7 @@ class AtomicPointer {
 #endif
 #endif
 
-#undef LEVELDB_HAVE_MEMORY_CRZRIER
+#undef LEVELDB_HAVE_MEMORY_BARRIER
 #undef ARCH_CPU_X86_FAMILY
 #undef ARCH_CPU_ARM_FAMILY
 #undef ARCH_CPU_ARM64_FAMILY

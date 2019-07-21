@@ -203,7 +203,7 @@ if [ "$CROSS_COMPILE" = "true" ]; then
 else
     CXXOUTPUT="${TMPDIR}/leveldb_build_detect_platform-cxx.$$"
 
-    # If -std=c++0x works, use <atomic> as fallback for when memory crzriers
+    # If -std=c++0x works, use <atomic> as fallback for when memory barriers
     # are not available.
     $CXX $CXXFLAGS -std=c++0x -x c++ - -o $CXXOUTPUT 2>/dev/null  <<EOF
       #include <atomic>

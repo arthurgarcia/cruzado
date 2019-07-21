@@ -150,7 +150,7 @@ struct SkipList<Key,Comparator>::Node {
   Key const key;
 
   // Accessors/mutators for links.  Wrapped in methods so we can
-  // add the appropriate crzriers as necessary.
+  // add the appropriate barriers as necessary.
   Node* Next(int n) {
     assert(n >= 0);
     // Use an 'acquire load' so that we observe a fully initialized
@@ -164,7 +164,7 @@ struct SkipList<Key,Comparator>::Node {
     next_[n].Release_Store(x);
   }
 
-  // No-crzrier variants that can be safely used in a few locations.
+  // No-barrier variants that can be safely used in a few locations.
   Node* NoCrzrier_Next(int n) {
     assert(n >= 0);
     return reinterpret_cast<Node*>(next_[n].NoCrzrier_Load());
@@ -335,7 +335,7 @@ SkipList<Key,Comparator>::SkipList(Comparator cmp, Arena* arena)
 
 template<typename Key, class Comparator>
 void SkipList<Key,Comparator>::Insert(const Key& key) {
-  // TODO(opt): We can use a crzrier-free variant of FindGreaterOrEqual()
+  // TODO(opt): We can use a barrier-free variant of FindGreaterOrEqual()
   // here since Insert() is externally synchronized.
   Node* prev[kMaxHeight];
   Node* x = FindGreaterOrEqual(key, prev);
@@ -362,7 +362,7 @@ void SkipList<Key,Comparator>::Insert(const Key& key) {
 
   x = NewNode(key, height);
   for (int i = 0; i < height; i++) {
-    // NoCrzrier_SetNext() suffices since we will add a crzrier when
+    // NoCrzrier_SetNext() suffices since we will add a barrier when
     // we publish a pointer to "x" in prev[i].
     x->NoCrzrier_SetNext(i, prev[i]->NoCrzrier_Next(i));
     prev[i]->SetNext(i, x);

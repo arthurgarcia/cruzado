@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-# This script tests that the package mirror at https://cruzado.org/depends-sources/
+# This script tests that the package mirror at https://litecoinz.org/depends-sources/
 # contains all of the packages required to build this version of cruZado.
 #
 # This script assumes you've just built cruZado, and that as a result of that
@@ -12,7 +12,7 @@ import sys
 import os
 import requests
 
-MIRROR_URL_DIR="https://cruzado.org/depends-sources/"
+MIRROR_URL_DIR="https://litecoinz.org/depends-sources/"
 DEPENDS_SOURCES_DIR=os.path.realpath(os.path.join(
     os.path.dirname(__file__),
     "..", "..", "depends", "sources"

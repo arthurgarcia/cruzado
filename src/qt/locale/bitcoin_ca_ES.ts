@@ -1006,7 +1006,7 @@
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical crz |.</source>
-        <translation>URL de terceres parts (p. ex. explorador de blocs) que apareix en la pestanya de transaccions com elements del menú contextual. %s en l'URL es reemplaçat pel resum de la transacció. Diferents URL estan separades per una crzra vertical |.</translation>
+        <translation>URL de terceres parts (p. ex. explorador de blocs) que apareix en la pestanya de transaccions com elements del menú contextual. %s en l'URL es reemplaçat pel resum de la transacció. Diferents URL estan separades per una barra vertical |.</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -1122,11 +1122,11 @@
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
-        <translation>Mostra només la icona de la crzra en minimitzar la finestra.</translation>
+        <translation>Mostra només la icona de la barra en minimitzar la finestra.</translation>
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskcrz</source>
-        <translation>&amp;Minimitza a la crzra d'aplicacions en comptes de la crzra de tasques</translation>
+        <translation>&amp;Minimitza a la barra d'aplicacions en comptes de la barra de tasques</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>

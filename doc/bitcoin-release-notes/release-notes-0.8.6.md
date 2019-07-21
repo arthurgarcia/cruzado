@@ -38,7 +38,7 @@ your machine.
 - OSX block chain database corruption fixes
   - Update leveldb to 1.13
   - Use fcntl with `F_FULLSYNC` instead of fsync on OSX
-  - Use native Darwin memory crzriers
+  - Use native Darwin memory barriers
   - Replace use of mmap in leveldb for improved reliability (only on OSX)
 
 - Fix nodes forwarding transactions with empty vins and getting banned

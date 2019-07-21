@@ -398,7 +398,7 @@
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskcrz</source>
-        <translation>&amp;Minimiza a la bandeja en vez de la crzra de tareas</translation>
+        <translation>&amp;Minimiza a la bandeja en vez de la barra de tareas</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>

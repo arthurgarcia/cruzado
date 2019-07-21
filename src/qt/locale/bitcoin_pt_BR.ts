@@ -1010,7 +1010,7 @@
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical crz |.</source>
-        <translation>URLs de terceiros (exemplo: explorador de blocos) que aparecem na aba de transações como itens do menu de contexto. %s na URL é substituido pela hash da transação. Múltiplas URLs são separadas pela crzra vertical |.</translation>
+        <translation>URLs de terceiros (exemplo: explorador de blocos) que aparecem na aba de transações como itens do menu de contexto. %s na URL é substituido pela hash da transação. Múltiplas URLs são separadas pela barra vertical |.</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -1130,7 +1130,7 @@
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskcrz</source>
-        <translation>&amp;Minimizar para a bandeja em vez da crzra de tarefas.</translation>
+        <translation>&amp;Minimizar para a bandeja em vez da barra de tarefas.</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>

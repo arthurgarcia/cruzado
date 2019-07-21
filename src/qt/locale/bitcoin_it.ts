@@ -679,7 +679,7 @@
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical crz |.</source>
         <translation>URL di terze parti (ad es. un block explorer) che appaiono nella tabella delle transazioni come voci nel menu contestuale. "%s" nell'URL è sostituito dall'hash della transazione.
-Per specificare più URL separarli con una crzra verticale "|".</translation>
+Per specificare più URL separarli con una barra verticale "|".</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -787,7 +787,7 @@ Per specificare più URL separarli con una crzra verticale "|".</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
-        <translation>Nascondi l'icona della crzra applicazioni</translation>
+        <translation>Nascondi l'icona della barra applicazioni</translation>
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
@@ -795,7 +795,7 @@ Per specificare più URL separarli con una crzra verticale "|".</translation>
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskcrz</source>
-        <translation>&amp;Minimizza nella tray crz invece che sulla crzra delle applicazioni</translation>
+        <translation>&amp;Minimizza nella tray crz invece che sulla barra delle applicazioni</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>

@@ -1,13 +1,13 @@
 #ifdef __APPLE__
 
-#ifndef PTHREAD_CRZRIER_H_
-#define PTHREAD_CRZRIER_H_
+#ifndef PTHREAD_BARRIER_H_
+#define PTHREAD_BARRIER_H_
 
 #include <pthread.h>
 #include <errno.h>
 
-typedef int pthread_crzrierattr_t;
-#define PTHREAD_CRZRIER_SERIAL_THREAD 1
+typedef int pthread_barrierattr_t;
+#define PTHREAD_BARRIER_SERIAL_THREAD 1
 
 typedef struct
 {
@@ -15,56 +15,56 @@ typedef struct
     pthread_cond_t cond;
     int count;
     int tripCount;
-} pthread_crzrier_t;
+} pthread_barrier_t;
 
 
-int pthread_crzrier_init(pthread_crzrier_t *crzrier, const pthread_crzrierattr_t *attr, unsigned int count)
+int pthread_barrier_init(pthread_barrier_t *barrier, const pthread_barrierattr_t *attr, unsigned int count)
 {
     if(count == 0)
     {
         errno = EINVAL;
         return -1;
     }
-    if(pthread_mutex_init(&crzrier->mutex, 0) < 0)
+    if(pthread_mutex_init(&barrier->mutex, 0) < 0)
     {
         return -1;
     }
-    if(pthread_cond_init(&crzrier->cond, 0) < 0)
+    if(pthread_cond_init(&barrier->cond, 0) < 0)
     {
-        pthread_mutex_destroy(&crzrier->mutex);
+        pthread_mutex_destroy(&barrier->mutex);
         return -1;
     }
-    crzrier->tripCount = count;
-    crzrier->count = 0;
+    barrier->tripCount = count;
+    barrier->count = 0;
 
     return 0;
 }
 
-int pthread_crzrier_destroy(pthread_crzrier_t *crzrier)
+int pthread_barrier_destroy(pthread_barrier_t *barrier)
 {
-    pthread_cond_destroy(&crzrier->cond);
-    pthread_mutex_destroy(&crzrier->mutex);
+    pthread_cond_destroy(&barrier->cond);
+    pthread_mutex_destroy(&barrier->mutex);
     return 0;
 }
 
-int pthread_crzrier_wait(pthread_crzrier_t *crzrier)
+int pthread_barrier_wait(pthread_barrier_t *barrier)
 {
-    pthread_mutex_lock(&crzrier->mutex);
-    ++(crzrier->count);
-    if(crzrier->count >= crzrier->tripCount)
+    pthread_mutex_lock(&barrier->mutex);
+    ++(barrier->count);
+    if(barrier->count >= barrier->tripCount)
     {
-        crzrier->count = 0;
-        pthread_cond_broadcast(&crzrier->cond);
-        pthread_mutex_unlock(&crzrier->mutex);
-        return PTHREAD_CRZRIER_SERIAL_THREAD;
+        barrier->count = 0;
+        pthread_cond_broadcast(&barrier->cond);
+        pthread_mutex_unlock(&barrier->mutex);
+        return PTHREAD_BARRIER_SERIAL_THREAD;
     }
     else
     {
-        pthread_cond_wait(&crzrier->cond, &(crzrier->mutex));
-        pthread_mutex_unlock(&crzrier->mutex);
+        pthread_cond_wait(&barrier->cond, &(barrier->mutex));
+        pthread_mutex_unlock(&barrier->mutex);
         return 0;
     }
 }
 
-#endif // PTHREAD_CRZRIER_H_
+#endif // PTHREAD_BARRIER_H_
 #endif // __APPLE__

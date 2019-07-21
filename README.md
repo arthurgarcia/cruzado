@@ -1,7 +1,7 @@
 cruZado Core integration/staging tree
 =====================================
 
-https://cruzado.org
+https://litecoinz.org
 
 What is cruZado?
 ----------------
@@ -12,13 +12,13 @@ with no central authority: managing transactions and issuing money are carried
 out collectively by the network. cruZado Core is the name of open source
 software which enables the use of this currency.
 
-[cruZado](https://cruzado.org/) is an implementation of the "[Zerocash](https://github.com/zcash/zips/raw/master/protocol/protocol.pdf)" protocol forked from [ZCash](https://z.cash/).
+[cruZado](https://litecoinz.org/) is an implementation of the "[Zerocash](https://github.com/zcash/zips/raw/master/protocol/protocol.pdf)" protocol forked from [ZCash](https://z.cash/).
 Based on Bitcoin's code, it intends to offer a far higher standard of privacy
 through a sophisticated zero-knowledge proving scheme that preserves
 confidentiality of transaction metadata. 
 
 For more information, as well as an immediately useable, binary version of
-the cruZado Core software, see [https://cruzado.org](https://cruzado.org).
+the cruZado Core software, see [https://litecoinz.org](https://litecoinz.org).
 
 License
 -------

@@ -144,7 +144,7 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("cruzado.org", "dnsseed.cruzado.org")); // cruZado
+        vSeeds.push_back(CDNSSeedData("litecoinz.org", "dnsseed.litecoinz.org")); // cruZado
 
         // guarantees the first 2 characters, when base58 encoded, are "L1"
         base58Prefixes[PUBKEY_ADDRESS]     = {0x0A,0xB3};
@@ -266,7 +266,7 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("cruzado.org", "dnsseed.cruzado.org")); // cruZado
+        vSeeds.push_back(CDNSSeedData("litecoinz.org", "dnsseed.litecoinz.org")); // cruZado
 
         // guarantees the first 2 characters, when base58 encoded, are "T1"
         base58Prefixes[PUBKEY_ADDRESS]     = {0x0E,0xA4};

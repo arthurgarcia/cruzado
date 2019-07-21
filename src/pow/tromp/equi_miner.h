@@ -191,11 +191,11 @@ struct equi {
   u32 xfull;
   u32 hfull;
   u32 bfull;
-  pthread_crzrier_t crzry;
+  pthread_barrier_t barry;
   equi(const u32 n_threads) {
     assert(sizeof(hashunit) == 4);
     nthreads = n_threads;
-    const int err = pthread_crzrier_init(&crzry, NULL, nthreads);
+    const int err = pthread_barrier_init(&barry, NULL, nthreads);
     assert(!err);
     hta.alloctrees();
     nslots = (bsizes *)hta.alloc(2 * NBUCKETS, sizeof(au32));
@@ -564,10 +564,10 @@ typedef struct {
   equi *eq;
 } thread_ctx;
 
-void crzrier(pthread_crzrier_t *crzry) {
-  const int rc = pthread_crzrier_wait(crzry);
-  if (rc != 0 && rc != PTHREAD_CRZRIER_SERIAL_THREAD) {
-//    printf("Could not wait on crzrier\n");
+void barrier(pthread_barrier_t *barry) {
+  const int rc = pthread_barrier_wait(barry);
+  if (rc != 0 && rc != PTHREAD_BARRIER_SERIAL_THREAD) {
+//    printf("Could not wait on barrier\n");
     pthread_exit(NULL);
   }
 }
@@ -578,31 +578,31 @@ void *worker(void *vp) {
 
   if (tp->id == 0)
 //    printf("Digit 0\n");
-  crzrier(&eq->crzry);
+  barrier(&eq->barry);
   eq->digit0(tp->id);
-  crzrier(&eq->crzry);
+  barrier(&eq->barry);
   if (tp->id == 0) {
     eq->xfull = eq->bfull = eq->hfull = 0;
     eq->showbsizes(0);
   }
-  crzrier(&eq->crzry);
+  barrier(&eq->barry);
   for (u32 r = 1; r < WK; r++) {
     if (tp->id == 0)
 //      printf("Digit %d", r);
-    crzrier(&eq->crzry);
+    barrier(&eq->barry);
     r&1 ? eq->digitodd(r, tp->id) : eq->digiteven(r, tp->id);
-    crzrier(&eq->crzry);
+    barrier(&eq->barry);
     if (tp->id == 0) {
 //      printf(" x%d b%d h%d\n", eq->xfull, eq->bfull, eq->hfull);
       eq->xfull = eq->bfull = eq->hfull = 0;
       eq->showbsizes(r);
     }
-    crzrier(&eq->crzry);
+    barrier(&eq->barry);
   }
   if (tp->id == 0)
 //    printf("Digit %d\n", WK);
   eq->digitK(tp->id);
-  crzrier(&eq->crzry);
+  barrier(&eq->barry);
   pthread_exit(NULL);
   return 0;
 }

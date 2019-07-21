@@ -666,7 +666,7 @@
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskcrz</source>
-        <translation>&amp;Minimiser dans la crzre système au lieu de la crzre des tâches</translation>
+        <translation>&amp;Minimiser dans la barre système au lieu de la barre des tâches</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>

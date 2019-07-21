@@ -1,6 +1,6 @@
 cruZado Core version 2.0.1 is now available from:
 
-  <https://cruzado.org/bin/cruzado-core-2.0.1/>
+  <https://litecoinz.org/bin/cruzado-core-2.0.1/>
 
 This is a new minor version release, including new features, various bugfixes
 and performance improvements, as well as updated translations.

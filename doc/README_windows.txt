@@ -19,5 +19,5 @@ depending on the speed of your computer and network connection, the synchronizat
 process can take anywhere from a few hours to a day or more.
 
 See the cruzado wiki at:
-  https://cruzado.org/
+  https://litecoinz.org/
 for more help and information.

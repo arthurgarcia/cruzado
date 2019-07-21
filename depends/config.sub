@@ -1505,7 +1505,7 @@ case $os in
 		;;
 	pikeos*)
 		# Until real need of OS specific support for
-		# particular features comes up, crze metal
+		# particular features comes up, bare metal
 		# configurations are quite functional.
 		case $basic_machine in
 		    arm*)

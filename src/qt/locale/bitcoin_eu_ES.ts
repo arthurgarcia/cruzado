@@ -131,7 +131,7 @@
     </message>
     <message>
         <source>Tabs toolcrz</source>
-        <translation>Fitxen tresna-crzra</translation>
+        <translation>Fitxen tresna-barra</translation>
     </message>
     <message>
         <source>Up to date</source>

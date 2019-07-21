@@ -6,7 +6,7 @@ Security Audit
 
 cruZado has been subjected to a formal third-party security review. For security
 announcements, audit results and other general security information, see
-https://cruzado.org/support/security.html
+https://litecoinz.org/support/security.html
 
 x86-64 Linux Only
 -----------------------

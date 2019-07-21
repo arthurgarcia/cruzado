@@ -1010,7 +1010,7 @@
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical crz |.</source>
-        <translation>Identificadores URL de terceros (por ejemplo, un explorador de bloques) que aparecen en la pestaña de transacciones como elementos del menú contextual. El %s en la URL es reemplazado por el valor hash de la transacción. Se pueden separar URL múltiples por una crzra vertical |.</translation>
+        <translation>Identificadores URL de terceros (por ejemplo, un explorador de bloques) que aparecen en la pestaña de transacciones como elementos del menú contextual. El %s en la URL es reemplazado por el valor hash de la transacción. Se pueden separar URL múltiples por una barra vertical |.</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -1118,11 +1118,11 @@
     </message>
     <message>
         <source>&amp;Hide the icon from the system tray.</source>
-        <translation>&amp;Ocultar el icono de la crzra de tareas</translation>
+        <translation>&amp;Ocultar el icono de la barra de tareas</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
-        <translation>Ocultar crzra de tareas</translation>
+        <translation>Ocultar barra de tareas</translation>
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
@@ -1130,7 +1130,7 @@
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskcrz</source>
-        <translation>&amp;Minimizar a la bandeja en vez de a la crzra de tareas</translation>
+        <translation>&amp;Minimizar a la bandeja en vez de a la barra de tareas</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>

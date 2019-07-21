@@ -12,9 +12,9 @@ For example:
 
     make HOST=x86_64-w64-mingw32 -j4
 
-A prefix will be generated that's suitable for plugging into cruZado's
+A prefix will be generated that's suitable for plugging into LitecoinZ's
 configure. In the above example, a dir named x86_64-w64-mingw32 will be
-created. To use it for cruZado:
+created. To use it for LitecoinZ:
 
     ./configure --prefix=`pwd`/depends/x86_64-w64-mingw32
 
@@ -50,7 +50,7 @@ RISC-V known issue: gcc-7.3.0 and gcc-7.3.1 result in a broken `test_bitcoin` ex
 this is apparently fixed in gcc-8.1.0.
 
 Dependency Options:
-The following can be set when running make: make FOO=crz
+The following can be set when running make: make FOO=bar
 
     SOURCES_PATH: downloaded sources will be placed here
     BASE_CACHE: built packages will be placed here
@@ -64,7 +64,7 @@ The following can be set when running make: make FOO=crz
     BUILD_ID_SALT: Optional salt to use when generating build package ids
 
 If some packages are not built, for example `make NO_WALLET=1`, the appropriate
-options will be passed to cruzado's configure. In this case, `--disable-wallet`.
+options will be passed to litecoinz's configure. In this case, `--disable-wallet`.
 
 Additional targets:
 
