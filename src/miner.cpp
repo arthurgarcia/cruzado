@@ -501,7 +501,7 @@ static bool ProcessBlockFound(const CBlock* pblock, const CChainParams& chainpar
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("LitecoinzMiner: generated block is stale");
+            return error("cruZadoMiner: generated block is stale");
     }
 
     // Inform about the new block
@@ -510,7 +510,7 @@ static bool ProcessBlockFound(const CBlock* pblock, const CChainParams& chainpar
     // Process this block the same as if we had received it from another node
     CValidationState state;
     if (!ProcessNewBlock(state, chainparams, NULL, pblock, true, NULL))
-        return error("LitecoinzMiner: ProcessNewBlock, block not accepted");
+        return error("cruZadoMiner: ProcessNewBlock, block not accepted");
 
     TrackMinedBlock(pblock->GetHash());
 
@@ -519,7 +519,7 @@ static bool ProcessBlockFound(const CBlock* pblock, const CChainParams& chainpar
 
 void static BitcoinMiner(const CChainParams& chainparams)
 {
-    LogPrintf("LitecoinzMiner started\n");
+    LogPrintf("cruZadoMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     RenameThread("cruzado-miner");
 
@@ -579,7 +579,7 @@ void static BitcoinMiner(const CChainParams& chainparams)
             // Get the height of current tip
             int nHeight = chainActive.Height();
             if (nHeight == -1) {
-                LogPrintf("Error in LitecoinzMiner: chainActive.Height() returned -1\n");
+                LogPrintf("Error in cruZadoMiner: chainActive.Height() returned -1\n");
                 return;
             }
             CBlockIndex* pindexPrev = chainActive.Tip();
@@ -593,17 +593,17 @@ void static BitcoinMiner(const CChainParams& chainparams)
             if (!pblocktemplate.get())
             {
                 if (GetArg("-mineraddress", "").empty()) {
-                    LogPrintf("Error in LitecoinzMiner: Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                    LogPrintf("Error in cruZadoMiner: Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 } else {
                     // Should never reach here, because -mineraddress validity is checked in init.cpp
-                    LogPrintf("Error in LitecoinzMiner: Invalid -mineraddress\n");
+                    LogPrintf("Error in cruZadoMiner: Invalid -mineraddress\n");
                 }
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("Running LitecoinzMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("Running cruZadoMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -650,7 +650,7 @@ void static BitcoinMiner(const CChainParams& chainparams)
 
                     // Found a solution
                     SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                    LogPrintf("LitecoinzMiner:\n");
+                    LogPrintf("cruZadoMiner:\n");
                     LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", pblock->GetHash().GetHex(), hashTarget.GetHex());
                     if (ProcessBlockFound(pblock, chainparams)) {
                         // Ignore chain updates caused by us
@@ -749,14 +749,14 @@ void static BitcoinMiner(const CChainParams& chainparams)
     {
         miningTimer.stop();
         c.disconnect();
-        LogPrintf("LitecoinzMiner terminated\n");
+        LogPrintf("cruZadoMiner terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
         miningTimer.stop();
         c.disconnect();
-        LogPrintf("LitecoinzMiner runtime error: %s\n", e.what());
+        LogPrintf("cruZadoMiner runtime error: %s\n", e.what());
         return;
     }
     miningTimer.stop();
